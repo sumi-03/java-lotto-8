@@ -5,6 +5,8 @@ import lotto.view.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.util.InputValidator.validatePurchaseAmount;
+
 public class InputHandler {
 
     private InputHandler() {
@@ -14,7 +16,7 @@ public class InputHandler {
         while (true) {
             try {
                 String input = InputView.readLine("구입금액을 입력해 주세요.");
-                // 검증하기
+                validatePurchaseAmount(input);
                 return Integer.parseInt(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
