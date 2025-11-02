@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.LottoTicket;
 import lotto.service.LottoMachine;
+import lotto.view.OutputView;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class LottoController {
     public void run() {
         int purchaseAmount = InputHandler.getPurchaseAmount();
         LottoTicket lottoTicket = lottoMachine.buyTickets(purchaseAmount);
-        // 로또 출력
+        OutputView.printPurchasedLottos(lottoTicket);
         List<Integer> winningNumbersInput = InputHandler.getWinningNumbers();
         int bonusNumber = InputHandler.getBonusNumber();
     }

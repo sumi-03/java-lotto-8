@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import static lotto.util.Constants.*;
 
@@ -27,5 +28,11 @@ public class Lotto {
         if (outOfRange) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위여야 합니다.");
         }
+    }
+
+    public String formatted() {
+        return numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ", "[", "]"));
     }
 }
