@@ -173,9 +173,9 @@ ___
 - 입출력(Console)은 테스트하지 않기
 - ParameterizedTest 활용해 반복 테스트 작성해도 좋음
 - 제공된 Lotto 클래스는 반드시 사용
-- numbers 외 필드 추가 금지
-- numbers 접근 제어자(private) 수정 불가
-- 패키지 이동은 가능
+  - numbers 외 필드 추가 금지
+  - numbers 접근 제어자(private) 수정 불가
+  - 패키지 이동은 가능
 
 ---
 ## 🧪 2주차 피드백: 테스트를 작성하는 이유에 대해 본인의 경험을 토대로 정리하기
