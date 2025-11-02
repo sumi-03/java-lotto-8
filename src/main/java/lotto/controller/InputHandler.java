@@ -11,22 +11,40 @@ public class InputHandler {
     }
 
     public static int getPurchaseAmount() {
-        String input = InputView.readLine("구입금액을 입력해 주세요.");
-        // 검증하기
-        return Integer.parseInt(input);
+        while (true) {
+            try {
+                String input = InputView.readLine("구입금액을 입력해 주세요.");
+                // 검증하기
+                return Integer.parseInt(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public static List<Integer> getWinningNumbers() {
-        String input = InputView.readLine("\n당첨 번호를 입력해 주세요.");
-        // 검증하기
-        // 일단 더미데이터 반환
-        List<Integer> numbers = new ArrayList<>();
-        return numbers;
+        while (true) {
+            try {
+                String input = InputView.readLine("\n당첨 번호를 입력해 주세요.");
+                // 검증하기
+                // 일단 더미데이터 반환
+                List<Integer> numbers = new ArrayList<>();
+                return numbers;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public static int getBonusNumber() {
-        String input = InputView.readLine("\n보너스 번호를 입력해 주세요.");
-        // 검증하기
-        return Integer.parseInt(input);
+        while (true) {
+            try {
+                String input = InputView.readLine("\n보너스 번호를 입력해 주세요.");
+                // 검증하기
+                return Integer.parseInt(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
