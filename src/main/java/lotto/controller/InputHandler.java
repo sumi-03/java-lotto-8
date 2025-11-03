@@ -1,9 +1,9 @@
 package lotto.controller;
 
+import lotto.util.InputParser;
 import lotto.util.InputValidator;
 import lotto.view.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InputHandler {
@@ -27,10 +27,7 @@ public class InputHandler {
             try {
                 String input = InputView.readLine("\n당첨 번호를 입력해 주세요.");
                 InputValidator.validateWinningNumbers(input);
-                // 파싱하기
-                // 일단 더미데이터 반환
-                List<Integer> numbers = new ArrayList<>();
-                return numbers;
+                return InputParser.parseWinningNumbers(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
