@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import static lotto.util.Constants.*;
+import static lotto.util.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,18 +16,18 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        if (numbers.size() != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(INVALID_WINNING_COUNT.getMessage());
         }
 
         if (new HashSet<>(numbers).size() != LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복이 있습니다.");
+            throw new IllegalArgumentException(DUPLICATE_WINNING_NUMBER.getMessage());
         }
 
         boolean outOfRange = numbers.stream()
                 .anyMatch(n -> n < LOTTO_NUMBER_MIN || n > LOTTO_NUMBER_MAX);
         if (outOfRange) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위여야 합니다.");
+            throw new IllegalArgumentException(INVALID_WINNING_RANGE.getMessage());
         }
     }
 
