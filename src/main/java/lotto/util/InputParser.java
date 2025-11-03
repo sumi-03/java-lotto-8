@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.util.Constants.NUMBER_DELIMITER;
 import static lotto.util.ErrorMessage.*;
 
 public class InputParser {
@@ -11,7 +12,7 @@ public class InputParser {
     }
 
     public static List<Integer> parseWinningNumbers(String input) {
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(NUMBER_DELIMITER))
                 .map(String::trim)
                 .map(InputParser::parseInteger)
                 .collect(Collectors.toList());
