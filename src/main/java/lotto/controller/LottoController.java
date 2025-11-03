@@ -19,6 +19,6 @@ public class LottoController {
         OutputView.printPurchasedLottos(lottoTicket);
 
         List<Integer> winningNumbers = InputHandler.getWinningNumbers();
-        int bonusNumber = InputHandler.getBonusNumber();
+        int bonusNumber = InputHandler.getBonusNumber(winningNumbers);
     }
 }

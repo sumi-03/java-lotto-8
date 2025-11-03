@@ -34,11 +34,11 @@ public class InputHandler {
         }
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber(List<Integer> winningNumbers) {
         while (true) {
             try {
                 String input = InputView.readLine("\n보너스 번호를 입력해 주세요.");
-                // 검증하기
+                InputValidator.validateBonusNumber(input, winningNumbers);
                 return InputParser.parseInteger(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
