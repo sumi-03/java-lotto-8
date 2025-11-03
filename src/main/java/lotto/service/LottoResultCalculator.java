@@ -21,4 +21,17 @@ public class LottoResultCalculator {
 
         return new ResultDto(result);
     }
+
+    public double calculateProfitRate(ResultDto result, int purchaseAmount) {
+        int totalPrize = 0;
+        Map<Rank, Integer> rankResults = result.results();
+
+        for (Map.Entry<Rank, Integer> entry : rankResults.entrySet()) {
+            Rank rank = entry.getKey();
+            int count = entry.getValue();
+            totalPrize += rank.prize() * count;
+        }
+
+        return (double) totalPrize / purchaseAmount * 100;
+    }
 }
