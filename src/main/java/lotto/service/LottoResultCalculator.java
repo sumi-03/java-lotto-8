@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class LottoResultCalculator {
 
-    public ResultDto calculate(LottoTicket lottoTicket, List<Integer> winningNumbers, int bonusNumber) {
+    public ResultDto analyzeResults(LottoTicket lottoTicket, List<Integer> winningNumbers, int bonusNumber) {
         Map<Rank, Integer> result = new EnumMap<>(Rank.class);
 
         for (Lotto lotto : lottoTicket.getLottos()) {

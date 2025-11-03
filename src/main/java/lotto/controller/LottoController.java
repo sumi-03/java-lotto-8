@@ -25,6 +25,6 @@ public class LottoController {
         List<Integer> winningNumbers = InputHandler.getWinningNumbers();
         int bonusNumber = InputHandler.getBonusNumber(winningNumbers);
 
-        ResultDto result = resultCalculator.calculate(lottoTicket, winningNumbers, bonusNumber);
+        ResultDto result = resultCalculator.analyzeResults(lottoTicket, winningNumbers, bonusNumber);
     }
 }
