@@ -6,6 +6,8 @@ import lotto.view.InputView;
 
 import java.util.List;
 
+import static lotto.util.ViewMessage.*;
+
 public class InputHandler {
     private InputHandler() {
     }
@@ -13,7 +15,7 @@ public class InputHandler {
     public static int getPurchaseAmount() {
         while (true) {
             try {
-                String input = InputView.readLine("구입금액을 입력해 주세요.");
+                String input = InputView.readLine(INPUT_PURCHASE_AMOUNT);
                 InputValidator.validatePurchaseAmount(input);
                 return InputParser.parseInteger(input);
             } catch (IllegalArgumentException e) {
@@ -25,7 +27,7 @@ public class InputHandler {
     public static List<Integer> getWinningNumbers() {
         while (true) {
             try {
-                String input = InputView.readLine("\n당첨 번호를 입력해 주세요.");
+                String input = InputView.readLine(INPUT_WINNING_NUMBERS);
                 InputValidator.validateWinningNumbers(input);
                 return InputParser.parseWinningNumbers(input);
             } catch (IllegalArgumentException e) {
@@ -37,7 +39,7 @@ public class InputHandler {
     public static int getBonusNumber(List<Integer> winningNumbers) {
         while (true) {
             try {
-                String input = InputView.readLine("\n보너스 번호를 입력해 주세요.");
+                String input = InputView.readLine(INPUT_BONUS_NUMBER);
                 InputValidator.validateBonusNumber(input, winningNumbers);
                 return InputParser.parseInteger(input);
             } catch (IllegalArgumentException e) {

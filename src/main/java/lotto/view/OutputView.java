@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static lotto.domain.Rank.*;
+import static lotto.util.ViewMessage.*;
 
 public class OutputView {
     private OutputView() {
@@ -27,8 +28,8 @@ public class OutputView {
     }
 
     private static void printResultHeader() {
-        System.out.println("\n당첨 통계");
-        System.out.println("---");
+        System.out.println(RESULT_HEADER_TITLE);
+        System.out.println(RESULT_HEADER_DIVIDER);
     }
 
     private static void printResultContents(ResultDto result, Double profitRate) {
@@ -41,17 +42,15 @@ public class OutputView {
             }
             printRankLine(rank, results.get(rank));
         }
-        System.out.println("총 수익률은 " + profitRate + "%입니다.");
+        System.out.printf((TOTAL_PROFIT_RATE) + "%n", profitRate);
     }
 
     private static void printRankLine(Rank rank, int count) {
         String prizeFormatted = String.format("%,d", rank.prize());
-
         if (rank == SECOND) {
             System.out.println(rank.matchCount() + "개 일치, 보너스 볼 일치 (" + prizeFormatted + "원) - " + count + "개");
             return;
         }
-
         System.out.println(rank.matchCount() + "개 일치 (" + prizeFormatted + "원) - " + count + "개");
     }
 }
