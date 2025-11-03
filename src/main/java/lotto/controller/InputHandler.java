@@ -15,7 +15,7 @@ public class InputHandler {
             try {
                 String input = InputView.readLine("구입금액을 입력해 주세요.");
                 InputValidator.validatePurchaseAmount(input);
-                return Integer.parseInt(input);
+                return InputParser.parseInteger(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -39,7 +39,7 @@ public class InputHandler {
             try {
                 String input = InputView.readLine("\n보너스 번호를 입력해 주세요.");
                 // 검증하기
-                return Integer.parseInt(input);
+                return InputParser.parseInteger(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

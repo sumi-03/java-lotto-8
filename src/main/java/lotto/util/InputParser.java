@@ -15,7 +15,7 @@ public class InputParser {
                 .collect(Collectors.toList());
     }
 
-    private static int parseInteger(String value) {
+    public static int parseInteger(String value) {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
