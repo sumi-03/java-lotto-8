@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.util.LottoRule.*;
+
 public enum Rank {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -19,11 +21,11 @@ public enum Rank {
     }
 
     public static Rank valueOf(int matchCount, boolean hasBonus) {
-        if (matchCount == 6) return FIRST;
-        if (matchCount == 5 && hasBonus) return SECOND;
-        if (matchCount == 5) return THIRD;
-        if (matchCount == 4) return FOURTH;
-        if (matchCount == 3) return FIFTH;
+        if (matchCount == MATCH_FIRST) return FIRST;
+        if (matchCount == MATCH_SECOND && hasBonus) return SECOND;
+        if (matchCount == MATCH_SECOND) return THIRD;
+        if (matchCount == MATCH_THIRD) return FOURTH;
+        if (matchCount == MATCH_FOURTH) return FIFTH;
         return MISS;
     }
 
