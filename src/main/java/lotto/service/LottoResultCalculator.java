@@ -14,9 +14,13 @@ public class LottoResultCalculator {
     public ResultDto analyzeResults(LottoTicket lottoTicket, List<Integer> winningNumbers, int bonusNumber) {
         Map<Rank, Integer> result = new EnumMap<>(Rank.class);
 
+        for (Rank rank : Rank.values()) {
+            result.put(rank, 0);
+        }
+
         for (Lotto lotto : lottoTicket.getLottos()) {
             Rank rank = Rank.valueOf(lotto.countMatchingNumbers(winningNumbers), lotto.contains(bonusNumber));
-            result.put(rank, result.getOrDefault(rank, 0) + 1);
+            result.put(rank, result.get(rank) + 1);
         }
 
         return new ResultDto(result);
