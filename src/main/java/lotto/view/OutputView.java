@@ -15,8 +15,8 @@ public class OutputView {
     }
 
     public static void printPurchasedLottos(LottoTicket lottoTicket) {
-        System.out.println("\n" + lottoTicket.lottoCount() + "개를 구매했습니다.");
-
+        System.out.printf(PURCHASE_RESULT, lottoTicket.lottoCount());
+        System.out.println();
         for (String lottoString : lottoTicket.formattedLottos()) {
             System.out.println(lottoString);
         }
@@ -42,15 +42,20 @@ public class OutputView {
             }
             printRankLine(rank, results.get(rank));
         }
-        System.out.printf((TOTAL_PROFIT_RATE) + "%n", profitRate);
+
+        System.out.printf(TOTAL_PROFIT_RATE + "%n", profitRate);
     }
 
     private static void printRankLine(Rank rank, int count) {
         String prizeFormatted = String.format("%,d", rank.prize());
+
         if (rank == SECOND) {
-            System.out.println(rank.matchCount() + "개 일치, 보너스 볼 일치 (" + prizeFormatted + "원) - " + count + "개");
+            System.out.printf(MATCH_WITH_BONUS_RESULT + "%n",
+                    rank.matchCount(), prizeFormatted, count);
             return;
         }
-        System.out.println(rank.matchCount() + "개 일치 (" + prizeFormatted + "원) - " + count + "개");
+
+        System.out.printf(MATCH_RESULT + "%n",
+                rank.matchCount(), prizeFormatted, count);
     }
 }
