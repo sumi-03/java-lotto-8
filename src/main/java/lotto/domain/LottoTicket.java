@@ -19,4 +19,8 @@ public class LottoTicket {
                 .map(Lotto::formatted)
                 .collect(Collectors.toList());
     }
+
+    public List<Lotto> getLottos() {
+        return List.copyOf(lottos);
+    }
 }

@@ -1,16 +1,20 @@
 package lotto.controller;
 
 import lotto.domain.LottoTicket;
+import lotto.dto.ResultDto;
 import lotto.service.LottoMachine;
+import lotto.service.LottoResultCalculator;
 import lotto.view.OutputView;
 
 import java.util.List;
 
 public class LottoController {
     private final LottoMachine lottoMachine;
+    private final LottoResultCalculator resultCalculator;
 
     public LottoController() {
         this.lottoMachine = new LottoMachine();
+        this.resultCalculator = new LottoResultCalculator();
     }
 
     public void run() {
@@ -20,5 +24,7 @@ public class LottoController {
 
         List<Integer> winningNumbers = InputHandler.getWinningNumbers();
         int bonusNumber = InputHandler.getBonusNumber(winningNumbers);
+
+        ResultDto result = resultCalculator.calculate(lottoTicket, winningNumbers, bonusNumber);
     }
 }

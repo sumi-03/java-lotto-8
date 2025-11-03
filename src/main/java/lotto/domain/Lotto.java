@@ -30,8 +30,19 @@ public class Lotto {
         }
     }
 
+    public int countMatchingNumbers(List<Integer> winningNumbers) {
+        return (int) numbers.stream()
+                .filter(winningNumbers::contains)
+                .count();
+    }
+
+    public boolean contains(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
     public String formatted() {
         return numbers.stream()
+                .sorted()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", ", "[", "]"));
     }
