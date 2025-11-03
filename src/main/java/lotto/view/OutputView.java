@@ -33,21 +33,25 @@ public class OutputView {
 
     private static void printResultContents(ResultDto result, Double profitRate) {
         Map<Rank, Integer> results = result.results();
-        List<Rank> printOrder = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
+        List<Rank> printOrder = List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
 
         for (Rank rank : printOrder) {
-            int count = results.get(rank);
-            String prizeFormatted = String.format("%,d", rank.prize());
-
             if (rank == MISS) {
                 continue;
             }
-            if (rank == SECOND) {
-                System.out.println(rank.matchCount() + "개 일치, 보너스 볼 일치 (" + prizeFormatted + "원) - " + count + "개");
-                continue;
-            }
-            System.out.println(rank.matchCount() + "개 일치 (" + prizeFormatted + "원) - " + count + "개");
+            printRankLine(rank, results.get(rank));
         }
         System.out.println("총 수익률은 " + profitRate + "%입니다.");
+    }
+
+    private static void printRankLine(Rank rank, int count) {
+        String prizeFormatted = String.format("%,d", rank.prize());
+
+        if (rank == SECOND) {
+            System.out.println(rank.matchCount() + "개 일치, 보너스 볼 일치 (" + prizeFormatted + "원) - " + count + "개");
+            return;
+        }
+
+        System.out.println(rank.matchCount() + "개 일치 (" + prizeFormatted + "원) - " + count + "개");
     }
 }
